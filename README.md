@@ -21,4 +21,8 @@ There are many `.py` files in this repo, and they are used for differnt purposes
 
 The main file is `dlibopen.py` which is the face recognition software. There is a folder linked with this python file and i.e [images](/images) folder. The faces which needs to be recognized goes in this folder.
 
-Once the images are there in the folder, we can start training on the persons images provided. We identify 128 points on the face which is unique to all of them, and by importing 2 files which is an opensource shape detection and face recognition model provided by dlib.
+Once the images are there in the folder, we can start training on the persons images provided. We identify *128 points* on the face which is unique to all of them, and by importing 2 files which is an opensource shape detection and face recognition model provided by dlib.
+```
+shape_predictor_68_face_landmarks.dat
+dlib_face_recognition_resnet_model_v1.dat
+```
