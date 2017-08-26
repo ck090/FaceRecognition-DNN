@@ -23,6 +23,19 @@ The main file is `dlibopen.py` which is the face recognition software. There is 
 
 Once the images are there in the folder, we can start training on the persons images provided. We identify *128 points* on the face which is unique to all of them, and by importing 2 files which is an opensource shape detection and face recognition model provided by dlib.
 ```
-shape_predictor_68_face_landmarks.dat
-dlib_face_recognition_resnet_model_v1.dat
+shape_predictor = dlib.shape_predictor('shape_predictor_68_face_landmarks.dat')
+face_recognition_model = dlib.face_recognition_model_v1('dlib_face_recognition_resnet_model_v1.dat')
 ```
+
+Then there are several functions which are used from drawing rectangles on the face frame... many faces can be deteceted at the same time (Also the names found are also put up on the screen to give a better UI experience), to identifying the *facial landmarks* within the image. 
+
+We have set the threshold to 0.6 which is the mid-way between recognizing false negatives and false positives.
+
+Also the frames are taken in `modulus 2` fashion to improve on the efficieny of running the software. (i.e every other frame is chosen). It's upto the users to change it if they have a gpu environment system.
+
+#How to run
+1. Git clone or download this Repository (don't forget to STAR it!! 😀)
+2. Store the images you want to recognize in the [images](/images) folder. (one picture per person is enough).
+3. Make sure you have all the dependencies installed.
+4. Run the `dlibopen.py` from within the folder.
+5. It should pretty much start running the software.
