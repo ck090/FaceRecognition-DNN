@@ -2,7 +2,7 @@
 
 *Free and open source face recognition with deep neural networks.*
 
-This Git Repository is a collection of various papers and code on the face recognition system using **Python 2.7** **dlib 19.4.0** and **Skimage 0.9.3**.
+This Git Repository is a collection of various papers and code on the face recognition system using **Python 2.7**, **dlib 19.4.0** and **Skimage 0.9.3**.
 
 The .pdf files in this repo are some of the earliest and the fundamental papers on this topic. It also includes the Research paper from Google's *FaceNet* and Taigman's *DeepFace*.
 
@@ -33,9 +33,12 @@ We have set the threshold to 0.6 which is the mid-way between recognizing false 
 
 Also the frames are taken in `modulus 2` fashion to improve on the efficieny of running the software. (i.e every other frame is chosen). It's upto the users to change it if they have a gpu environment system.
 
-#How to run
+# How to run
 1. Git clone or download this Repository (don't forget to STAR it!! 😀)
 2. Store the images you want to recognize in the [images](/images) folder. (one picture per person is enough).
 3. Make sure you have all the dependencies installed.
 4. Run the `dlibopen.py` from within the folder.
 5. It should pretty much start running the software.
+
+Here's a picture of it recognizing Chad from RHCP.
+<img width="621" alt="chad" src="https://user-images.githubusercontent.com/12717969/29740532-3bd14a0a-8a76-11e7-9067-ae50c79f2dde.png">
