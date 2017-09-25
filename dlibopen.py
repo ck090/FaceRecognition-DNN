@@ -10,6 +10,8 @@ webcam = cv2.VideoCapture(0)
 
 face_detector = dlib.get_frontal_face_detector()
 
+face_pose_predictor = dlib.shape_predictor('shape_predictor_68_face_landmarks.dat')
+
 shape_predictor = dlib.shape_predictor('shape_predictor_68_face_landmarks.dat')
 
 face_recognition_model = dlib.face_recognition_model_v1('dlib_face_recognition_resnet_model_v1.dat')
@@ -17,7 +19,7 @@ face_recognition_model = dlib.face_recognition_model_v1('dlib_face_recognition_r
 cv2.namedWindow("Live Feed for Recognition", cv2.WINDOW_NORMAL)
 cv2.resizeWindow("Live Feed for Recognition", 600, 400)
 
-tolerance = 0.6
+tolerance = 0.5
 font = cv2.FONT_HERSHEY_SIMPLEX
 
 def get_new_face_encodings(frame, detected_faces):
@@ -54,23 +56,28 @@ def find_match(known_faces, names, face):
 	
 	return 'Unknown'
 
+################################## Start of the program ##################################
 process_this_frame = True
 print("\n\n\t\tWelcome to Deep-Learning Face Recognition Model")
-#pre-trained images get encoding values
+#identify the images whos value end with .jpg only
 image_filenames = filter(lambda x: x.endswith('.jpg'), os.listdir('images/'))
 image_filenames = sorted(image_filenames)
 
+#images path
 paths_to_images = ['images/' + x for x in image_filenames]
 face_encodings = []
 
+#Encode the images located in the folder to thier respective numpy arrays
 for path_to_image in paths_to_images:
 	face_encodings_in_image = get_face_encodings(path_to_image)
 
 	face_encodings.append(face_encodings_in_image[0])
 print("\n\n\t\tTrained on the Images available in the folder")
+
 #get their names
 names = [x[:-4] for x in image_filenames]
 
+#start recognizing for individual frames
 while 1:
 	ret, frame = webcam.read()
 	small_frame = cv2.resize(frame, (0, 0), fx=0.5, fy=0.5)
@@ -96,10 +103,9 @@ while 1:
 				x = x + 1
 		#face_names.append(match)
 	process_this_frame = not process_this_frame
-	#print(length)
+
 	cv2.putText(frame, 'Found {} face in the frame'.format(len(detected_face)), (50, 40), 
 													font, 0.5, (255, 0, 0), 1, cv2.CV_AA)
-
 	if length == 1:
 		for face_rect in detected_face:
 			top = face_rect.top()*2

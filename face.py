@@ -5,10 +5,8 @@ from skimage import io
 video_capture = cv2.VideoCapture(0)
 
 # Load a sample picture and learn how to recognize it.
-obama_image = io.imread("images/chandrakanth.jpg")
+obama_image = io.imread("images/Chandrakanth.jpg")
 obama_face_encoding = face_recognition.face_encodings(obama_image)[0]
-obama_image2 = io.imread("images/barack.jpg")
-obama_face_encoding2 = face_recognition.face_encodings(obama_image2)[0]
 chad_image = io.imread("test/chad.jpg")
 chad_image_enco = face_recognition.face_encodings(chad_image)[0]
 
@@ -36,14 +34,11 @@ while True:
 		for face_encoding in face_encodings:
 			# See if the face is a match for the known face(s)
 			match = face_recognition.compare_faces([obama_face_encoding], face_encoding)
-			match1 = face_recognition.compare_faces([obama_face_encoding2], face_encoding)
 			match2 = face_recognition.compare_faces([chad_image_enco], face_encoding)
 			name = "Unknown"
 
 			if match[0]:
 				name = "ChandraKanth"
-			if match1[0]:
-				name = "Barack"
 			if match2[0]:
 				name = "Chad Smith"
 
