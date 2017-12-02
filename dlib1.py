@@ -8,7 +8,7 @@ face_detector = dlib.get_frontal_face_detector()
 win = dlib.image_window()
 
 # Load the image into an array
-image = io.imread("mulitpleimg/2.jpg")
+image = io.imread("test/2d.jpg")
 
 # Run the HOG face detector on the image data.
 # The result will be the bounding boxes of the faces in our image.

@@ -14,7 +14,7 @@ face_pose_predictor = dlib.shape_predictor(predictor_model)
 face_aligner = openface.AlignDlib(predictor_model)
 
 # Load the image
-image = io.imread("test/obma2.jpg")
+image = io.imread("test/2.jpg")
 
 # Run the HOG face detector on the image data
 detected_faces = face_detector(image, 1)
@@ -35,4 +35,4 @@ for i, face_rect in enumerate(detected_faces):
 	alignedFace = face_aligner.align(534, image, face_rect, landmarkIndices=openface.AlignDlib.OUTER_EYES_AND_NOSE)
 
 	# Save the aligned image to a file
-	cv2.imwrite("aligned_face_{}.jpg".format(i), alignedFace)        
+	cv2.imwrite("alignedfaces/aligned_face_{}.jpg".format(i), alignedFace)        

@@ -15,7 +15,8 @@ face_aligner = openface.AlignDlib(predictor_model)
 win = dlib.image_window()
 
 # Load the image
-image = io.imread("images/Chandrakanth.jpg")
+#image = io.imread("images/Chandrakanth.jpg")
+image = io.imread("test/2.jpg")
 
 # Run the HOG face detector on the image data
 detected_faces = face_detector(image, 1)

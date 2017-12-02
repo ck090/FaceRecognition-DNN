@@ -5,6 +5,7 @@ import cv2
 import os
 import scipy.misc
 import numpy as np 
+from sklearn.metrics import accuracy_score
 
 webcam = cv2.VideoCapture(0)
 
@@ -43,18 +44,20 @@ def draw_rectangle(top, left, right, bottom):
 	cv2.rectangle(frame, (left-2, top-10), (right+2, top), (150, 151, 0), -1)
 
 def compare_face_encodings(known_faces, face):
-	return (np.linalg.norm(known_faces - face, axis=1) <= tolerance)
+	val = (np.linalg.norm(known_faces - face, axis=1) <= tolerance)
+	return val
 
 def find_match(known_faces, names, face):
 	matches = compare_face_encodings(known_faces, face)
-	
+	#This will print the true or false values for all the pictures in the frame compared with the images in folder
+	#print(matches)
 	count = 0
 	for match in matches:
 		if match:
 			return names[count]
 		count += 1
 	
-	return 'Unknown'
+	#return 'Unknown'
 
 ################################## Start of the program ##################################
 process_this_frame = True
@@ -114,7 +117,7 @@ while 1:
 			bottom = face_rect.bottom()*2
 
 			draw_rectangle(top, left, right, bottom)
-			cv2.putText(frame, '{}'.format(match.capitalize()), (left - 10, top - 20), font, .7, 
+			cv2.putText(frame, '{}'.format(match), (left + 50, top - 20), font, .7, 
 																		(66, 152, 243), 2, cv2.CV_AA)
 	else:
 		for face_rect, name in zip(detected_face, face_names):
@@ -124,13 +127,13 @@ while 1:
 			bottom = face_rect.bottom()*2
 
 			draw_rectangle(top, left, right, bottom)
-			cv2.putText(frame, name.capitalize(), (left - 10, top - 20), font, .7, (66, 152, 243), 2, cv2.CV_AA)
+			cv2.putText(frame, name, (left - 10, top - 20), font, .7, (66, 152, 243), 2, cv2.CV_AA)
 
 	cv2.putText(frame, 'Press \'q\' to exit', (10,20), font, 0.5, (255, 0, 0), 1, cv2.CV_AA)
 	cv2.imshow("Live Feed for Recognition", frame)
 	#print("done")
 	if cv2.waitKey(1) & 0xFF == ord('q'):
-		print("\n\n\t\tThankyou!")
+		#print("\n\n\t\tThankyou!")
 		print("\n\n")
 		break
 
