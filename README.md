@@ -17,7 +17,7 @@ The .pdf files in this repo are some of the earliest and the fundamental papers 
 Use pip or easy_install to install any missing dependencies.
 
 # Usage
-There are many `.py` files in this repo, and they are used for differnt purposes.
+There are many `.py` files in this repo, and they are used for different purposes.
 
 The main file is `dlibopen.py` which is the face recognition software. There is a folder linked with this python file and i.e [images](/images) folder. The faces which needs to be recognized goes in this folder.
 
