@@ -59,7 +59,7 @@ def find_match(known_faces, names, face):
 	
 	#return 'Unknown'
 
-################################## Start of the program ##################################
+################################# Start of the program ##################################
 process_this_frame = True
 print("\n\n\t\tWelcome to Deep-Learning Face Recognition Model")
 #identify the images whos value end with .jpg only

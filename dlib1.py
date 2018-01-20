@@ -11,7 +11,7 @@ win = dlib.image_window()
 image = io.imread("test/2d.jpg")
 
 # Run the HOG face detector on the image data.
-# The result will be the bounding boxes of the faces in our image.
+# The result will be bounding boxes of the faces in our image.
 detected_faces = face_detector(image, 0)
 
 print("I found {} faces in the file {}".format(len(detected_faces), "images/chandrakanth.jpg"))
